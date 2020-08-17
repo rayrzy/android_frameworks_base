@@ -193,4 +193,7 @@
 
   <!-- Pocket Service -->
   <java-symbol type="string" name="config_pocketJudgeVendorSensorName" />
+
+  <!-- For gaming mode -->
+  <java-symbol type="array" name="game_package_regex" />
 </resources>
