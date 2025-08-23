@@ -313,10 +313,6 @@ public class StatusBar extends SystemUI implements DemoMode,
             "system:" + Settings.System.QS_TILE_TITLE_VISIBILITY;
     private static final String SYSUI_ROUNDED_FWVALS =
             Settings.Secure.SYSUI_ROUNDED_FWVALS;
-    private static final String GAMING_MODE_ACTIVE =
-            "system:" + Settings.System.GAMING_MODE_ACTIVE;
-    private static final String GAMING_MODE_HEADSUP_TOGGLE =
-            "system:" + Settings.System.GAMING_MODE_HEADSUP_TOGGLE;
     private static final String LESS_BORING_HEADS_UP =
             "system:" + Settings.System.LESS_BORING_HEADS_UP;
     private static final String QS_ROWS_PORTRAIT =
@@ -550,7 +546,6 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     private boolean mSysuiRoundedFwvals;
 
-    private boolean mHeadsUpDisabled, mGamingModeActivated;
     private boolean mlessBoringHeadsUp;
 
     private ImageView mQSBlurView;
@@ -964,8 +959,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         tunerService.addTunable(this, FORCE_SHOW_NAVBAR);
         tunerService.addTunable(this, QS_TILE_TITLE_VISIBILITY);
         tunerService.addTunable(this, SYSUI_ROUNDED_FWVALS);
-        tunerService.addTunable(this, GAMING_MODE_ACTIVE);
-        tunerService.addTunable(this, GAMING_MODE_HEADSUP_TOGGLE);
         tunerService.addTunable(this, LESS_BORING_HEADS_UP);
         tunerService.addTunable(this, QS_ROWS_PORTRAIT);
         tunerService.addTunable(this, QS_ROWS_LANDSCAPE);
@@ -5360,18 +5353,8 @@ public class StatusBar extends SystemUI implements DemoMode,
                         TunerService.parseIntegerSwitch(newValue, true);
                 updateCorners();
                 break;
-            case GAMING_MODE_ACTIVE:
-                mGamingModeActivated =
-                        TunerService.parseIntegerSwitch(newValue, false);
-                mNotificationInterruptionStateProvider.setGamingPeekMode(mGamingModeActivated && mHeadsUpDisabled);
-                break;
-            case GAMING_MODE_HEADSUP_TOGGLE:
-                mHeadsUpDisabled =
-                        TunerService.parseIntegerSwitch(newValue, true);
-                mNotificationInterruptionStateProvider.setGamingPeekMode(mGamingModeActivated && mHeadsUpDisabled);
-                break;
             case LESS_BORING_HEADS_UP:
-                mlessBoringHeadsUp = 
+                mlessBoringHeadsUp =
                         TunerService.parseIntegerSwitch(newValue, false);
                 mNotificationInterruptionStateProvider.setUseLessBoringHeadsUp(mlessBoringHeadsUp);
                 break;

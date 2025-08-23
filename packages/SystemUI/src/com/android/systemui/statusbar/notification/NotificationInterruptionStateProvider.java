@@ -76,7 +76,6 @@ public class NotificationInterruptionStateProvider {
     protected boolean mUseHeadsUp = false;
     private boolean mDisableNotificationAlerts;
 
-    private boolean mSkipHeadsUp;
     private boolean mLessBoringHeadsUp;
 
     @Inject
@@ -239,13 +238,6 @@ public class NotificationInterruptionStateProvider {
         }
 
         StatusBarNotification sbn = entry.notification;
-
-        if (shouldSkipHeadsUp(sbn)) {
-            if (DEBUG_HEADS_UP) {
-                Log.d(TAG, "No alerting: gaming mode or boring apps");
-            }
-            return false;
-        }
 
         if (!mUseHeadsUp) {
             if (DEBUG_HEADS_UP) {

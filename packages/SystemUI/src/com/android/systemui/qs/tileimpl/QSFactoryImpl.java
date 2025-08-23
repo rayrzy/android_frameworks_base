@@ -46,7 +46,6 @@ import com.android.systemui.qs.tiles.DcDimmingTile;
 import com.android.systemui.qs.tiles.DndTile;
 import com.android.systemui.qs.tiles.FlashlightTile;
 import com.android.systemui.qs.tiles.FPSInfoTile;
-import com.android.systemui.qs.tiles.GamingModeTile;
 import com.android.systemui.qs.tiles.HeadsUpTile;
 import com.android.systemui.qs.tiles.HotspotTile;
 import com.android.systemui.qs.tiles.HWKeysTile;
@@ -130,7 +129,6 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<SoundSearchTile> mSoundSearchTileProvider;
     private final Provider<SoundTile> mSoundTileProvider;
     private final Provider<RebootTile> mRebootTileProvider;
-    private final Provider<GamingModeTile> mGamingModeTileProvider;
     private final Provider<DataSwitchTile> mDataSwitchTileProvider;
     private final Provider<ScreenStabilizationTile> mScreenStabilizationTileProvider;
     private final Provider<ScreenRecordTile> mScreeenRecordTileProvider;
@@ -185,7 +183,6 @@ public class QSFactoryImpl implements QSFactory {
             Provider<SoundSearchTile> soundSearchTileProvider,
             Provider<SoundTile> soundTileProvider,
             Provider<RebootTile> rebootTileProvider,
-            Provider<GamingModeTile> gamingModeTileProvider,
             Provider<DataSwitchTile> dataSwitchTileProvider,
             Provider<FPSInfoTile> fpsInfoTileProvider,
             Provider<ScreenStabilizationTile> screenStabilizationTileProvider,
@@ -234,7 +231,6 @@ public class QSFactoryImpl implements QSFactory {
         mSoundSearchTileProvider = soundSearchTileProvider;
         mSoundTileProvider = soundTileProvider;
         mRebootTileProvider = rebootTileProvider;
-        mGamingModeTileProvider = gamingModeTileProvider;
         mDataSwitchTileProvider = dataSwitchTileProvider;
         mFPSInfoTileProvider = fpsInfoTileProvider;
         mScreenStabilizationTileProvider = screenStabilizationTileProvider;
@@ -342,8 +338,6 @@ public class QSFactoryImpl implements QSFactory {
                 return mSoundTileProvider.get();
             case "reboot":
                 return mRebootTileProvider.get();
-            case "gaming":
-                return mGamingModeTileProvider.get();
             case "dataswitch":
                 return mDataSwitchTileProvider.get();
             case "fpsinfo":
